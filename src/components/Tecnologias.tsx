@@ -1,77 +1,47 @@
-import * as THREE from 'three'
-import { useRef, useState, useMemo, useEffect } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import type { ThreeEvent } from '@react-three/fiber'
-import { Text, TrackballControls } from '@react-three/drei'
-import s from './css/Tecnologias.module.css'
+import s from "./css/Tecnologias.module.css";
 
+type TechGroup = {
+  title: string;
+  items: string[];
+};
 
-type WordProps = {
-  children: string
-  position: THREE.Vector3
-}
+const techGroups: TechGroup[] = [
+  {
+    title: "LLMs & agents",
+    items: ["RAG", "Tool-calling", "MCP", "LiteLLM", "Evals"],
+  },
+  {
+    title: "Backend",
+    items: ["Python", "FastAPI", "SQLAlchemy 2.0 async", "pytest"],
+  },
+  {
+    title: "Data",
+    items: ["PostgreSQL", "pgvector", "Redis"],
+  },
+  {
+    title: "Infra & observability",
+    items: ["Docker", "GCP", "Langfuse"],
+  },
+];
 
-type TextMesh = THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial>
-
-function Word({ children, ...props }: WordProps) {
-  const color = new THREE.Color()
-  const fontProps = { font: '/Inter-Bold.woff', fontSize: 2.5, letterSpacing: -0.05, lineHeight: 1, 'material-toneMapped': false }
-  const ref = useRef<TextMesh>(null)
-  const [hovered, setHovered] = useState(false)
-  const over = (e: ThreeEvent<PointerEvent>) => (e.stopPropagation(), setHovered(true))
-  const out = () => setHovered(false)
-  // Change the mouse cursor on hover
-  useEffect(() => {
-    if (hovered) document.body.style.cursor = 'pointer'
-    return () => {
-      document.body.style.cursor = 'auto'
-    }
-  }, [hovered])
-  // Tie component to the render-loop
-  useFrame(({ camera }) => {
-    if (!ref.current) return
-    // Make text face the camera
-    ref.current.quaternion.copy(camera.quaternion)
-    // Animate font color
-    ref.current.material.color.lerp(color.set(hovered ? '#fa2720' : 'white'), 0.1)
-  })
-  return <Text ref={ref} onPointerOver={over} onPointerOut={out} {...props} {...fontProps} children={children} />
-}
-
-let react = ['React','node.js',  'Redux','Javascript', 'CSS','Style-Component', 'sequelize.js', 'Postgres', 'Express','Javascript','Html' ] 
-
-function Cloud({ count = 4, radius = 20 }) {
-  // Create a count x count random words with spherical distribution
-  const words = useMemo(() => {
-    const temp: [THREE.Vector3, string][] = []
-    const spherical = new THREE.Spherical()
-    const phiSpan = Math.PI / (count + 1)
-    const thetaSpan = (Math.PI * 2) / count
-    console.log(thetaSpan)
-    for (let i = 1; i < count + 1; i++)
-     
-      for (let j = 0; j < count; j++) temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), react[j]]) 
-      console.log(temp)
-    return temp  
-  
-  }, [count, radius])
-  
-
-console.log(words)
-  return words.map(([pos, word], index) => <Word key={index} position={pos} children={word} />)
-}
-
-export default function Tecnologias() {
-  return (
-    <div  className={s.container}>
-      <h1 className={s.titu}>Tecnologias</h1>
-      
-    <Canvas className={s.Canvas} dpr={[2, 2]} camera={{ position: [1, 2, 35] as [number, number, number], fov: 100 }}>
-      <fog attach="fog" args={['#202025', 0, 80]} />
-      <Cloud count={11} radius={40} />
-      <TrackballControls />
-    </Canvas>
-    
+const Tecnologias = () => (
+  <div className={s.container}>
+    <h1 className={s.titu}>Technologies</h1>
+    <div className={s.grid}>
+      {techGroups.map((group) => (
+        <section key={group.title} className={s.group}>
+          <h2 className={s.groupTitle}>{group.title}</h2>
+          <ul className={s.items}>
+            {group.items.map((item) => (
+              <li key={item} className={s.item}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </div>
-  )
-}
+  </div>
+);
+
+export default Tecnologias;

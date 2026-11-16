@@ -1,12 +1,7 @@
 
 .tecno{
  width: 100%;
- height: 100vh;
- text-align: center;
-background-color:rgb(6 6 6);
-display: flex;
-justify-content: center;
-align-items: center;
+ background-color:rgb(6 6 6);
 }
 
 .Proye{
@@ -104,9 +99,6 @@ align-items: center;
 }
 
 @media  screen and (max-width: 650px) {
-    .Proye{
-   height:1200px
-    }
     .About{
       height:1350px;
       background-color: #060606;
@@ -116,37 +108,14 @@ align-items: center;
     top: 200%;
     left: 18%
     }
-    .tecno{
-        height: 400px;
-    }
 }
 
-@media screen and (max-width: 1250px){
-    .tecno{
-        margin-top:390px;
-    }
-    .Proye{
-        margin-top: 390px;
-    
-
-    }
-    .Title{
-        position: absolute;
-        top: 195%;
-        left:40%;
-    }
-}
 
 @media  screen and (max-width: 450px) {
     .Title{
         position: absolute;
         top: 200%;
         left:18%;
-    }
-    .Proye{
-        margin-top: 130px;
-    
-
     }
 }
 
