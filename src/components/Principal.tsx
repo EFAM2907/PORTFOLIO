@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Animacion from "./Animacion";
 import Proyecto from "./Proyecto";
-import Carousell from "./Carousell";
 import Tecnologias from "./Tecnologias";
 import About from "./About";
 import Fade from "react-reveal/Fade";
@@ -53,12 +52,6 @@ const Principal = () => {
       </section>
       <section className={s.tecno}>
         <Tecnologias />
-      </section>
-      <section className={s.CaroTitu}>
-        <div className={s.caro}>
-          <h1 className={s.h1}>Certificados</h1>
-          <Carousell />
-        </div>
       </section>
       <footer className={s.footer}>
         <div className={s.conte_iconos}>
