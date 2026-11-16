@@ -10,7 +10,6 @@ type Project = {
   subtitle?: string;
   description: string;
   highlights?: string[];
-  tags?: string[];
   links: ProjectLink[];
   featured?: boolean;
 };
@@ -20,27 +19,12 @@ const projects: Project[] = [
     title: "Multi-tenant AI agent platform",
     subtitle: "AI Operations / Customer Support for B2B SaaS",
     description:
-      "A conversational agent with SSE streaming that answers from the company knowledge base and queries or updates shipments and users through tool-calling.",
+      "A conversational AI agent for B2B SaaS support teams. It streams answers in real time from each company's own knowledge base and can look up or update shipments and users on request.",
     highlights: [
-      "RAG over pgvector, with strict multi-tenant isolation and RBAC (OWNER > ADMIN > MEMBER > VIEWER) enforced in both the REST API and the chat tools.",
-      "Self-hosted LLM gateway (LiteLLM) with cost-based model routing, provider fallback, retries and per-tenant budgets, traced with Langfuse.",
-      "Gmail integration (OAuth per organization) that auto-answers tracking questions by email.",
-      "Eval harness for model-routing decisions and ~200 pytest tests against a real Postgres database.",
-    ],
-    tags: [
-      "Python",
-      "FastAPI",
-      "PostgreSQL",
-      "pgvector",
-      "SQLAlchemy 2.0 async",
-      "Redis",
-      "LiteLLM",
-      "RAG",
-      "Tool-calling",
-      "MCP",
-      "Langfuse",
-      "pytest",
-      "Docker",
+      "Every organization's data is fully isolated, with role-based access (owner, admin, member, viewer) enforced across the API and the chat.",
+      "Each request is routed to the best-fit model by cost, with provider fallback, retries and per-organization budgets.",
+      "Tracking questions are answered automatically by email through each organization's Gmail.",
+      "Model-routing decisions are backed by an eval harness and ~200 automated tests against a real database.",
     ],
     links: [
       {
@@ -59,7 +43,7 @@ const projects: Project[] = [
   {
     title: "Patitas 🐾",
     description:
-      "Bootcamp team project with a social goal: promote pet adoption and connect people who want to help animals in poor conditions with adopters who can give them a good home.",
+      "A web app that connects people who want to adopt with animals in need of a home. It promotes adoption over buying and helps animals living in poor conditions find a good life.",
     links: [
       {
         label: "GitHub",
@@ -79,15 +63,6 @@ const ProjectCard = ({ project }: { project: Project }) => (
       <ul className={s.highlights}>
         {project.highlights.map((item) => (
           <li key={item}>{item}</li>
-        ))}
-      </ul>
-    )}
-    {project.tags && (
-      <ul className={s.tags}>
-        {project.tags.map((tag) => (
-          <li key={tag} className={s.tag}>
-            {tag}
-          </li>
         ))}
       </ul>
     )}

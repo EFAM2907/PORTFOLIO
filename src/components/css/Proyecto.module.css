@@ -67,22 +67,6 @@
   margin-top: 6px;
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 16px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.tag {
-  padding: 4px 10px;
-  border: 1px solid rgb(73, 73, 73);
-  border-radius: 999px;
-  font-size: 0.8em;
-}
-
 .links {
   display: flex;
   gap: 12px;

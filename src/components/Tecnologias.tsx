@@ -11,8 +11,19 @@ const techGroups: TechGroup[] = [
     items: ["RAG", "Tool-calling", "MCP", "LiteLLM", "Evals"],
   },
   {
+    title: "Frontend",
+    items: ["React", "TypeScript", "JavaScript", "Redux", "HTML", "CSS"],
+  },
+  {
     title: "Backend",
-    items: ["Python", "FastAPI", "SQLAlchemy 2.0 async", "pytest"],
+    items: [
+      "Python",
+      "FastAPI",
+      "SQLAlchemy 2.0 async",
+      "Node.js",
+      "Express",
+      "pytest",
+    ],
   },
   {
     title: "Data",
