@@ -1,7 +1,7 @@
 
 import { useState} from "react";
-import Landing from './components/Landig.jsx'
-import Principal from './components/Principal.jsx'
+import Landing from './components/Landig'
+import Principal from './components/Principal'
 import './App.css';
 
 function App() {

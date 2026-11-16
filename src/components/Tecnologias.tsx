@@ -5,17 +5,26 @@ import { Text, TrackballControls } from '@react-three/drei'
 import s from './css/Tecnologias.module.css'
 
 
-function Word({ children, ...props }) {
+type WordProps = {
+  children: string
+  position: THREE.Vector3
+}
+
+type TextMesh = THREE.Mesh<THREE.BufferGeometry, THREE.MeshBasicMaterial>
+
+function Word({ children, ...props }: WordProps) {
   const color = new THREE.Color()
   const fontProps = { font: '/Inter-Bold.woff', fontSize: 2.5, letterSpacing: -0.05, lineHeight: 1, 'material-toneMapped': false }
-  const ref = useRef()
+  const ref = useRef<TextMesh>(null)
   const [hovered, setHovered] = useState(false)
   const over = (e) => (e.stopPropagation(), setHovered(true))
   const out = () => setHovered(false)
   // Change the mouse cursor on hover
   useEffect(() => {
     if (hovered) document.body.style.cursor = 'pointer'
-    return () => (document.body.style.cursor = 'auto')
+    return () => {
+      document.body.style.cursor = 'auto'
+    }
   }, [hovered])
   // Tie component to the render-loop
   useFrame(({ camera }) => {
@@ -32,7 +41,7 @@ let react = ['React','node.js',  'Redux','Javascript', 'CSS','Style-Component', 
 function Cloud({ count = 4, radius = 20 }) {
   // Create a count x count random words with spherical distribution
   const words = useMemo(() => {
-    const temp = []
+    const temp: [THREE.Vector3, string][] = []
     const spherical = new THREE.Spherical()
     const phiSpan = Math.PI / (count + 1)
     const thetaSpan = (Math.PI * 2) / count
@@ -55,7 +64,7 @@ export default function Tecnologias() {
     <div  className={s.container}>
       <h1 className={s.titu}>Tecnologias</h1>
       
-    <Canvas className={s.Canvas} dpr={[2, 2]} camera={{ position: [1, 2, 35], fov: 100 }}>
+    <Canvas className={s.Canvas} dpr={[2, 2]} camera={{ position: [1, 2, 35] as [number, number, number], fov: 100 }}>
       <fog attach="fog" args={['#202025', 0, 80]} />
       <Cloud count={11} radius={40} />
       <TrackballControls />
