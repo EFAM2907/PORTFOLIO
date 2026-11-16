@@ -17,6 +17,9 @@ const About = () => {
               from full stack, so I cover everything from the API to the
               interface.
             </p>
+            <p className={style.languages}>
+              Spanish (native) · English (B2)
+            </p>
             <a
               className={style.boton}
               href={CV_URL}

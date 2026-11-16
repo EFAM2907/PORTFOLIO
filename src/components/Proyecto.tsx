@@ -17,14 +17,15 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Multi-tenant AI agent platform",
-    subtitle: "AI Operations / Customer Support for B2B SaaS",
+    subtitle: "Backend & AI Engineer · AI Operations / Customer Support for B2B SaaS",
     description:
       "A conversational AI agent for B2B SaaS support teams. It streams answers in real time from each company's own knowledge base and can look up or update shipments and users on request.",
     highlights: [
       "Every organization's data is fully isolated, with role-based access (owner, admin, member, viewer) enforced across the API and the chat.",
       "Each request is routed to the best-fit model by cost, with provider fallback, retries and per-organization budgets.",
+      "Agent calls to external tools are secured with delegated, scope-limited tokens.",
       "Tracking questions are answered automatically by email through each organization's Gmail.",
-      "Model-routing decisions are backed by an eval harness and ~200 automated tests against a real database.",
+      "An eval harness measures routing accuracy, cost and latency, backed by ~200 automated tests against a real database.",
     ],
     links: [
       {
@@ -36,8 +37,9 @@ const projects: Project[] = [
   },
   {
     title: "Prodya",
+    subtitle: "Software Engineer · 2026 – Present",
     description:
-      "My current professional work: a production product focused on scalable infrastructure and code optimization.",
+      "Part of the team building Prodya's new mockup system, working on the application's architecture and core features.",
     links: [{ label: "Website", href: "https://prodya.com/waitlist" }],
   },
   {
@@ -49,7 +51,6 @@ const projects: Project[] = [
         label: "GitHub",
         href: "https://github.com/FrancoG21/PF-Henry-Front",
       },
-      { label: "Live demo", href: "https://pf-henry-front-three.vercel.app/" },
     ],
   },
 ];
