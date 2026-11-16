@@ -1,9 +1,7 @@
 import style from "./css/About.module.css";
 import Fade from "react-reveal/Fade";
 import edwin from "../assets/edwin.jpg";
-
-const CV_URL =
-  "https://drive.google.com/file/d/1FfQzdt0EKR_lrrWofcvPxi8wKauSYYiT/view?usp=sharing";
+import { CV_URL } from "../config";
 
 const About = () => {
   return (

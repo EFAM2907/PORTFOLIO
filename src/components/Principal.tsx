@@ -3,6 +3,7 @@ import Animacion from "./Animacion";
 import Proyecto from "./Proyecto";
 import Tecnologias from "./Tecnologias";
 import About from "./About";
+import { CV_URL } from "../config";
 import Fade from "react-reveal/Fade";
 import s from "./css/Principal.module.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -81,7 +82,7 @@ const Principal = () => {
         </div>
         <div className={s.center}>
           <a
-            href="https://drive.google.com/file/d/1FfQzdt0EKR_lrrWofcvPxi8wKauSYYiT/view?usp=sharing"
+            href={CV_URL}
             target="_blank"
             rel="noopener noreferrer"
             className={s.cv}
