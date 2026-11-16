@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { useRef, useState, useMemo, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
+import type { ThreeEvent } from '@react-three/fiber'
 import { Text, TrackballControls } from '@react-three/drei'
 import s from './css/Tecnologias.module.css'
 
@@ -17,7 +18,7 @@ function Word({ children, ...props }: WordProps) {
   const fontProps = { font: '/Inter-Bold.woff', fontSize: 2.5, letterSpacing: -0.05, lineHeight: 1, 'material-toneMapped': false }
   const ref = useRef<TextMesh>(null)
   const [hovered, setHovered] = useState(false)
-  const over = (e) => (e.stopPropagation(), setHovered(true))
+  const over = (e: ThreeEvent<PointerEvent>) => (e.stopPropagation(), setHovered(true))
   const out = () => setHovered(false)
   // Change the mouse cursor on hover
   useEffect(() => {
@@ -28,6 +29,7 @@ function Word({ children, ...props }: WordProps) {
   }, [hovered])
   // Tie component to the render-loop
   useFrame(({ camera }) => {
+    if (!ref.current) return
     // Make text face the camera
     ref.current.quaternion.copy(camera.quaternion)
     // Animate font color

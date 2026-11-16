@@ -1,4 +1,5 @@
 import React from "react";
+import type { FormEvent } from "react";
 import s from "./css/Form.module.css";
 import { TextField } from "@material-ui/core";
 import {ToastContainer,toast } from "react-toastify";
@@ -6,14 +7,18 @@ import emailjs from '@emailjs/browser'
 import "react-toastify/dist/ReactToastify.css";
 import Swal from 'sweetalert2'
 
-const Form = ({ abrirCerrarModal }) => {
+type FormProps = {
+  abrirCerrarModal: () => void;
+};
+
+const Form = ({ abrirCerrarModal }: FormProps) => {
   
 
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     
-    emailjs.sendForm('service_ck117nt', 'template_z4bym3b', e.target,'jKnPHY38cuv9VjbeT')
+    emailjs.sendForm('service_ck117nt', 'template_z4bym3b', e.currentTarget,'jKnPHY38cuv9VjbeT')
     
       Swal.fire(
         'Gracias Por Tu Feedback',
