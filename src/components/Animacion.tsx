@@ -36,7 +36,7 @@ const Animacion = () => {
           />
           <div className={style.cen}>
             <p className={style.p}>Hi, My Name is edwin arias</p>
-            <p className={style.sub}>Full stack developer</p>
+            <p className={style.sub}>AI Engineer</p>
             
             
 

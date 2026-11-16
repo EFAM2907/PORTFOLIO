@@ -1,27 +1,35 @@
-import React from "react";
-import style from './css/About.module.css'
-import Fade from 'react-reveal/Fade';
+import style from "./css/About.module.css";
+import Fade from "react-reveal/Fade";
+import edwin from "../assets/edwin.jpg";
+
+const CV_URL =
+  "https://drive.google.com/file/d/1FfQzdt0EKR_lrrWofcvPxi8wKauSYYiT/view?usp=sharing";
 
 const About = () => {
   return (
     <div className={style.contenedor}>
-        
       <div className={style.conten}>
-      <Fade right> 
-     
-        <img id='about'
-        className={style.img}
-          src='https://avatars.githubusercontent.com/u/97002137?s=400&u=fe94a8c4e468bf829e185bff7afd4d3212701fe9&v=4'
-          alt="yo"
-        />
-        <div className={style.info}> 
-       <p  className={style.parrafo}>👋 Hola! Mi nombre es edwin,Soy un Desarollador Full Stack Con Inclinacion al Frontend! Siempre busque Algo que me sacara de lo rutinario Y De Repente Boom 💥Encontre Mi Lugar</p>
-      <a className={style.boton} href='https://drive.google.com/file/d/1FfQzdt0EKR_lrrWofcvPxi8wKauSYYiT/view?usp=sharing' target="_blank" rel="noopener noreferrer">ver CV🚀</a>
-       </div>
-       
-       </Fade>
+        <Fade right>
+          <img id="about" className={style.img} src={edwin} alt="Edwin Arias" />
+          <div className={style.info}>
+            <p className={style.parrafo}>
+              👋 Hi, I'm Edwin, an AI Engineer based in Medellín. I build
+              production-ready agents and LLM systems: RAG, tool-calling,
+              evaluation and observability on top of Python backends. I come
+              from full stack, so I cover everything from the API to the
+              interface.
+            </p>
+            <a
+              className={style.boton}
+              href={CV_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View CV 🚀
+            </a>
+          </div>
+        </Fade>
       </div>
-      
     </div>
   );
 };

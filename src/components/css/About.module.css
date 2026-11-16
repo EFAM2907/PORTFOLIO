@@ -20,6 +20,10 @@
 .img{
     border-radius: 70px;
     padding: 40px;
+    width: 380px;
+    height: 380px;
+    object-fit: cover;
+    object-position: 50% 20%;
 }
 .info{
     display: flex;
@@ -61,7 +65,8 @@
       
     }
     .img{
-        height:300px
+        width: 300px;
+        height: 300px;
     }
     .contenedor{
         padding-top: 50px;
