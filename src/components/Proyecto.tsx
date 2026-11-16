@@ -1,122 +1,121 @@
-import React from "react";
 import s from "./css/Proyecto.module.css";
 
-const Proyecto = () => {
-  return (
-    <div className={s.container}>
-
-      {/* PATITAS */}
-      <div className={s.Proyecto}>
-        <div className={s.Proye}>
-          <img className={s.img} src='https://telemedellin.tv/wp-content/uploads/2019/08/La-Perla-e1565797876677.jpg'alt="imf" />
-           <h4 className={s.h4}>Patitas🐾</h4>
-          <p className={s.parra}>
-          Este Proyecto Surgio  Con La Idea De Hacer Un Beneficio Social,
-          Concientizar a las Personas a Optar Por Animales y No Venderlos. 
-          Sobre Todo Buscar Ayudar a los Animales Que se Encuentran en Malas Condiciones de Vida,
-          Sin Comer y Sin Salud.
-          Se Proporciona Una Conexión Entre la Persona que Quiere Ayudar a Un Animal a Que lo Adopten y Darle un Buen Hospedaje y Vida
-          </p>
-          <div className={s.botones}>
-            <a
-              className={s.demo}
-              href="https://github.com/FrancoG21/PF-Henry-Front"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className={s.icon}
-                src="https://img.icons8.com/fluency/344/github.png"
-                alt="proyecto"
-              />
-            </a>
-            <a
-              className={s.demo}
-              href="https://pf-henry-front-three.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className={s.icon}
-                src="https://img.icons8.com/emoji/344/link-emoji.png"
-                alt="proyecto"
-              />
-            </a>
-           
-          </div>
-        </div>
-
-        {/* Countries */}
-
-        <div className={s.Proye}>
-          <img className={s.img} src="https://thumbs.dreamstime.com/b/siluetas-de-la-gente-que-sostiene-banderas-de-diversos-pa%C3%ADses-41520437.jpg" alt="imf" />
-          <h4 className={s.h4}>Countries ✈</h4>
-          <p className={s.parra}>
-          Una App Diseñada Para El que Viaja,
-          El que Estudia,Al que le Interesa Saber un Poco de la Inmensidad de Lugares que Podemos Recorrer en Este Mundo!
-         Countries es tu Mejor Opción
-          </p>
-          <div className={s.botones}>
-            <a
-              className={s.demo}
-              href="https://github.com/EFAM2907/PI-Countries-main"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className={s.icon}
-                src="https://img.icons8.com/fluency/344/github.png"
-                alt="proyecto"
-              />
-            </a>
-            {/* <a className={s.demo} target="_blank" rel="noopener noreferrer">
-              <img
-                className={s.icon}
-                src="https://img.icons8.com/emoji/344/link-emoji.png"
-                alt="proyecto"
-              />
-            </a> */}
-          </div>
-        </div>
-
-
-         {/* APP-DOGS */}
-        <div className={s.Proye}>
-          <img className={s.img} src="https://gestion.portalbiesa.com/redaccio/arxius/imatges/201902/770_1550480986blog_post_consejo_perro_adoptado_1.jpg" alt="imf" />
-          <h4 className={s.h4}>Dogs🐶</h4>
-          <p className={s.parra}>
-            Se trata de una SPA, Utilizando React y Redux para el Front End.
-            La SPA Consume Datos de una API a Través de Un
-            Back End Desarrollado en Node.js Utilizando Express, Agregando
-            Nuevas Funcionalidades a la API Original. Algunos Features del
-            Proyecto: Cache de búsquedas, Ordenamiento y Filtros, Formularios
-            Controlados.
-          </p>
-          <div className={s.botones}>
-            <a
-              className={s.demo}
-              href="https://github.com/EFAM2907/Proyecto-De-Perros"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className={s.icon}
-                src="https://img.icons8.com/fluency/344/github.png"
-                alt="proyecto"
-              />
-            </a>
-            {/* <a className={s.demo} target="_blank" rel="noopener noreferrer">
-              <img
-                className={s.icon}
-                src="https://img.icons8.com/emoji/344/link-emoji.png"
-                alt="proyecto"
-              />
-            </a> */}
-          </div>
-        </div> 
-      </div>
-    </div>
-  );
+type ProjectLink = {
+  label: string;
+  href: string;
 };
+
+type Project = {
+  title: string;
+  subtitle?: string;
+  description: string;
+  highlights?: string[];
+  tags?: string[];
+  links: ProjectLink[];
+  featured?: boolean;
+};
+
+const projects: Project[] = [
+  {
+    title: "Multi-tenant AI agent platform",
+    subtitle: "AI Operations / Customer Support for B2B SaaS",
+    description:
+      "A conversational agent with SSE streaming that answers from the company knowledge base and queries or updates shipments and users through tool-calling.",
+    highlights: [
+      "RAG over pgvector, with strict multi-tenant isolation and RBAC (OWNER > ADMIN > MEMBER > VIEWER) enforced in both the REST API and the chat tools.",
+      "Self-hosted LLM gateway (LiteLLM) with cost-based model routing, provider fallback, retries and per-tenant budgets, traced with Langfuse.",
+      "Gmail integration (OAuth per organization) that auto-answers tracking questions by email.",
+      "Eval harness for model-routing decisions and ~200 pytest tests against a real Postgres database.",
+    ],
+    tags: [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "pgvector",
+      "SQLAlchemy 2.0 async",
+      "Redis",
+      "LiteLLM",
+      "RAG",
+      "Tool-calling",
+      "MCP",
+      "Langfuse",
+      "pytest",
+      "Docker",
+    ],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/EFAM2907/ai-agent-platform",
+      },
+    ],
+    featured: true,
+  },
+  {
+    title: "Prodya",
+    description:
+      "My current professional work: a production product focused on scalable infrastructure and code optimization.",
+    links: [{ label: "Website", href: "https://prodya.com/waitlist" }],
+  },
+  {
+    title: "Patitas 🐾",
+    description:
+      "Bootcamp team project with a social goal: promote pet adoption and connect people who want to help animals in poor conditions with adopters who can give them a good home.",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/FrancoG21/PF-Henry-Front",
+      },
+      { label: "Live demo", href: "https://pf-henry-front-three.vercel.app/" },
+    ],
+  },
+];
+
+const ProjectCard = ({ project }: { project: Project }) => (
+  <article className={project.featured ? `${s.card} ${s.featured}` : s.card}>
+    <h2 className={s.title}>{project.title}</h2>
+    {project.subtitle && <p className={s.subtitle}>{project.subtitle}</p>}
+    <p className={s.description}>{project.description}</p>
+    {project.highlights && (
+      <ul className={s.highlights}>
+        {project.highlights.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    )}
+    {project.tags && (
+      <ul className={s.tags}>
+        {project.tags.map((tag) => (
+          <li key={tag} className={s.tag}>
+            {tag}
+          </li>
+        ))}
+      </ul>
+    )}
+    <div className={s.links}>
+      {project.links.map((link) => (
+        <a
+          key={link.href}
+          className={s.link}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </article>
+);
+
+const Proyecto = () => (
+  <div className={s.container}>
+    <h1 className={s.heading}>Projects</h1>
+    <div className={s.grid}>
+      {projects.map((project) => (
+        <ProjectCard key={project.title} project={project} />
+      ))}
+    </div>
+  </div>
+);
 
 export default Proyecto;

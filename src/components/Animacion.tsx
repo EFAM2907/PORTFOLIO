@@ -81,7 +81,7 @@ const Animacion = () => {
        
       </Bounce>
 
-  <ul>
+  <ul className={style.arrows}>
     <li>
     <a className={style.area} href='#about'/>
 
