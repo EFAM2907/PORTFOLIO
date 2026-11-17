@@ -2,9 +2,7 @@ import React from "react";
 import type { FormEvent } from "react";
 import s from "./css/Form.module.css";
 import { TextField } from "@material-ui/core";
-import {ToastContainer,toast } from "react-toastify";
 import emailjs from '@emailjs/browser'
-import "react-toastify/dist/ReactToastify.css";
 import Swal from 'sweetalert2'
 
 type FormProps = {
@@ -63,7 +61,6 @@ const Form = ({ abrirCerrarModal }: FormProps) => {
 
         <button className={s.botonForm}>Send</button>
       </form>
-      <ToastContainer/>
     </div>
   );
 };
