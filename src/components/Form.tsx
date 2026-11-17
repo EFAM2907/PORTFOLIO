@@ -21,8 +21,8 @@ const Form = ({ abrirCerrarModal }: FormProps) => {
     emailjs.sendForm('service_ck117nt', 'template_z4bym3b', e.currentTarget,'jKnPHY38cuv9VjbeT')
     
       Swal.fire(
-        'Gracias Por Tu Feedback',
-        'Pronto Sera Revisado',
+        'Thanks for your feedback',
+        'It will be reviewed soon',
         'success'
           )
    abrirCerrarModal() 
@@ -30,14 +30,14 @@ const Form = ({ abrirCerrarModal }: FormProps) => {
 
   return (
     <div className={s.container}>
-      <h1 className={s.titu}>deja tu Feedback aqui 👇</h1>
+      <h1 className={s.titu}>Leave your feedback here 👇</h1>
       <form className={s.Form} onSubmit={e => sendEmail(e)} >
         <div>
           <TextField
             className={s.input}
             type="text"
             variant="filled"
-            label="nombre"
+            label="Name"
             name="user_name"
           />
         </div>
@@ -46,7 +46,7 @@ const Form = ({ abrirCerrarModal }: FormProps) => {
             className={s.input}
             type="email"
             variant="filled"
-            label="correo"
+            label="Email"
             name="email"
           />
         </div>
@@ -61,7 +61,7 @@ const Form = ({ abrirCerrarModal }: FormProps) => {
           />
         </div>
 
-        <button className={s.botonForm}>Enviar</button>
+        <button className={s.botonForm}>Send</button>
       </form>
       <ToastContainer/>
     </div>

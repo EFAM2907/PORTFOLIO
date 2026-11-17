@@ -64,7 +64,7 @@ const Principal = () => {
             <img
               className={s.icono}
               src="https://img.icons8.com/color/344/linkedin.png"
-              alt='img'
+              alt="LinkedIn"
             />
           </a>
           <a
@@ -75,7 +75,7 @@ const Principal = () => {
             <img
               className={s.icono}
               src="https://img.icons8.com/fluency/344/github.png"
-              alt='img'
+              alt="GitHub"
             />
           </a>
          
@@ -87,7 +87,7 @@ const Principal = () => {
             rel="noopener noreferrer"
             className={s.cv}
           >
-            Ver cv
+            View CV
           </a>
         </div>
       </footer>

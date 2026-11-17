@@ -35,7 +35,7 @@ const Animacion = () => {
             alt="imagen"
           />
           <div className={style.cen}>
-            <p className={style.p}>Hi, My Name is edwin arias</p>
+            <p className={style.p}>Hi, my name is Edwin Arias</p>
             <p className={style.sub}>AI Engineer</p>
             
             
