@@ -13,43 +13,67 @@
   font-size: 1.8em;
 }
 
-.grid {
+.groups {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  flex-direction: column;
+  gap: 40px;
   width: 100%;
   max-width: 1000px;
 }
 
 .group {
-  box-sizing: border-box;
-  flex: 1 1 400px;
-  padding: 24px;
-  border: 1px solid rgb(73, 73, 73);
-  border-radius: 15px;
-  text-align: left;
   font-family: 'Open Sans', sans-serif;
   color: aliceblue;
 }
 
 .groupTitle {
-  margin: 0 0 16px;
-  font-size: 1.1em;
+  margin: 0 0 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(73, 73, 73);
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(5, 113, 236);
 }
 
-.items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 28px 16px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.item {
-  padding: 4px 12px;
-  border: 1px solid rgb(5, 113, 236);
-  border-radius: 999px;
-  font-size: 0.9em;
+.tile {
+  --brand: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  color: rgba(240, 248, 255, 0.85);
+  transition: color 0.25s, transform 0.25s;
+}
+
+.icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tile:hover .icon {
+  color: var(--brand);
+  transform: translateY(-4px);
+}
+
+.name {
+  font-size: 0.85em;
+  color: rgb(170, 170, 170);
 }
