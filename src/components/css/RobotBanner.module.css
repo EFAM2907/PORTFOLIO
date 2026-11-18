@@ -1,7 +1,7 @@
 .banner {
   position: absolute;
   left: 50%;
-  bottom: 26%;
+  bottom: 20%;
   transform: translateX(-50%);
   width: min(860px, 96vw);
   pointer-events: none;
@@ -69,12 +69,32 @@
 
 /* ---- robot ---- */
 .robot {
-  animation: walk linear both;
+  /* The walk animation is set inline: its keyframes are generated in RobotBanner.tsx. */
+  will-change: transform;
 }
 
-@keyframes walk {
-  from { transform: translate(var(--x0), 196px); }
-  to   { transform: translate(var(--x1), 196px); }
+/* ---- sitting robot ---- */
+.sitting {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  opacity: 0;
+  animation: sitDown 0.35s ease-out both;
+}
+
+@keyframes sitDown {
+  0%   { opacity: 0; transform: scaleY(0.75); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+
+.nod {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: nod 3.2s ease-in-out infinite;
+}
+
+@keyframes nod {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-5deg); }
 }
 
 .bob {
@@ -135,6 +155,13 @@
   .robot,
   .digit {
     display: none;
+  }
+  .sitting {
+    opacity: 1;
+    animation: none;
+  }
+  .nod {
+    animation: none;
   }
   .letter {
     opacity: 1;

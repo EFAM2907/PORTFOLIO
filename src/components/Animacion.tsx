@@ -16,7 +16,7 @@ const ROCKET_SIZE = 60;
 const ROCKET_BOTTOM_GAP = 24;
 // Where the rocket sits at the top of the page, as a fraction of the viewport
 // height: low enough to stay clear of the photo and the name.
-const ROCKET_START = 0.75;
+const ROCKET_START = 0.86;
 
 const Animacion = () => {
   const [modal, setModal] = useState(false);
