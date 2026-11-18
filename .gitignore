@@ -24,3 +24,6 @@ yarn-error.log*
 
 # vite build output
 /dist
+
+# local clone of the GitHub profile repo, not part of this site
+/EFAM2907/
