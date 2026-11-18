@@ -2,6 +2,7 @@ import Animacion from "./Animacion";
 import Proyecto from "./Proyecto";
 import Tecnologias from "./Tecnologias";
 import About from "./About";
+import Navbar from "./Navbar";
 import { CV_URL } from "../config";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import Fade from "react-reveal/Fade";
@@ -10,8 +11,9 @@ import s from "./css/Principal.module.css";
 const Principal = () => {
   return (
     <div>
+      <Navbar />
       <Fade>
-        <header>
+        <header id="home">
           <Animacion />
         </header>
       </Fade>
@@ -19,14 +21,14 @@ const Principal = () => {
         <About />
       </section>
       <br/>
-      <section className={s.Proye}>
+      <section id="projects" className={s.Proye}>
         {/* <h1 className={s.Title}>Proyectos</h1> */}
         <Proyecto />
       </section>
-      <section className={s.tecno}>
+      <section id="technologies" className={s.tecno}>
         <Tecnologias />
       </section>
-      <footer className={s.footer}>
+      <footer id="contact" className={s.footer}>
         <div className={s.conte_iconos}>
           <a
             href="https://www.linkedin.com/in/edwinfer2907/"

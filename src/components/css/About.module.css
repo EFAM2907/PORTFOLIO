@@ -53,13 +53,11 @@
 
 .languages{
     margin: 8px 0 0;
-    font-family: 'Open Sans', sans-serif;
     font-size: 0.9em;
     opacity: 0.7;
 }
 
 .parrafo{
-    font-family: 'Open Sans', sans-serif;
 }
 
 @media  screen and (max-width: 550px) {

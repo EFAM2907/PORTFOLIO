@@ -1,6 +1,12 @@
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+
   body {
 background-color:rgb(6 6 6);
    margin: 0%;
+   font-family: 'Montserrat', sans-serif;
   } 
 
    
