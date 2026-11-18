@@ -1,0 +1,73 @@
+.contact {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  color: #fff;
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 1.8em;
+}
+
+.text {
+  max-width: 520px;
+  margin: 0 0 32px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border: 1px solid rgb(5, 113, 236);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.primary {
+  background: rgb(5, 113, 236);
+  color: #fff;
+}
+
+.primary:hover {
+  background: rgb(30, 135, 255);
+}
+
+.secondary {
+  background: transparent;
+  color: rgb(61, 134, 245);
+}
+
+.secondary:hover {
+  background: rgb(5, 113, 236);
+  color: #fff;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.copy {
+  margin: 64px 0 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+}
