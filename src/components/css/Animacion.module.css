@@ -107,6 +107,15 @@
   height: 60px;
 }
 
+/* Desktop: center the avatar + robot scene a bit below the middle of the screen,
+   so it stays well placed on both short and tall windows. */
+@media screen and (min-width: 900px) {
+  .section{
+    bottom: auto;
+    top: calc(55% - 255px);
+  }
+}
+
 @media  screen and (max-width: 450px) {
   .img{
     width: 160px;

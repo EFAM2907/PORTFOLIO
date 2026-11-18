@@ -71,6 +71,7 @@ const RobotBanner = () => (
         y1={GROUND_Y}
         x2={VIEW_W}
         y2={GROUND_Y}
+        style={{ animationDelay: `${sitAt}s` } as CSSProperties}
       />
 
       <g
