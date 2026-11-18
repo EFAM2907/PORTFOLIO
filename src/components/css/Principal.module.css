@@ -21,7 +21,7 @@
 .About{
    display: flex;
    justify-content:center;
-   
+   overflow-x: hidden;
 }
 
 
@@ -53,9 +53,16 @@
 }
 
 .icono{
+    width:40px;
     height:40px;
     border-radius: 10px;
     margin:10px;
+}
+.github{
+    color:#181717;
+}
+.linkedin{
+    color:#0a66c2;
 }
 .conte_iconos{
     width:55%;
@@ -100,7 +107,6 @@
 
 @media  screen and (max-width: 650px) {
     .About{
-      height:1350px;
       background-color: #060606;
     }
     .Title{

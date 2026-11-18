@@ -5,6 +5,7 @@ import Bounce from "react-reveal/Bounce";
 import { Modal } from "@material-ui/core";
 import Form  from './Form'
 import Avatar from './Avatar'
+import { GithubIcon, LinkedinIcon, RocketIcon } from './icons'
 
 
 
@@ -44,22 +45,14 @@ const Animacion = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  className={style.iconos}
-                  src="https://img.icons8.com/ios-glyphs/344/github.png"
-                  alt='icono'
-                />
+                <GithubIcon className={style.iconos} label="GitHub" />
               </a>
               <a
                 href="https://www.linkedin.com/in/edwinfer2907/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  className={style.iconos}
-                  src="https://img.icons8.com/ios-filled/344/linkedin.png"
-                  alt='icono'
-                />
+                <LinkedinIcon className={style.iconos} label="LinkedIn" />
               </a> 
               
             </div>
@@ -90,7 +83,7 @@ const Animacion = () => {
       
      
     </div>
-  <div className={style.abrir}><h1 className={style.h1}>Feedback</h1> <a  onClick={abrirCerrarModal}><img className={style.cohete} src="https://img.icons8.com/color-glass/344/launched-rocket.png" alt='img'/></a> 
+  <div className={style.abrir}><h1 className={style.h1}>Feedback</h1> <a  onClick={abrirCerrarModal}><RocketIcon className={style.cohete} label="Open feedback form" /></a> 
     
         </div>
         </div>

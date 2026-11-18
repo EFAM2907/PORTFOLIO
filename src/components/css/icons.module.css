@@ -1,0 +1,13 @@
+.flame {
+  transform-origin: 32px 46px;
+  animation: flicker 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: scaleY(0.8); }
+  to   { transform: scaleY(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flame { animation: none; }
+}

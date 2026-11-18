@@ -3,6 +3,7 @@ import Proyecto from "./Proyecto";
 import Tecnologias from "./Tecnologias";
 import About from "./About";
 import { CV_URL } from "../config";
+import { GithubIcon, LinkedinIcon } from "./icons";
 import Fade from "react-reveal/Fade";
 import s from "./css/Principal.module.css";
 
@@ -32,22 +33,14 @@ const Principal = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              className={s.icono}
-              src="https://img.icons8.com/color/344/linkedin.png"
-              alt="LinkedIn"
-            />
+            <LinkedinIcon className={`${s.icono} ${s.linkedin}`} label="LinkedIn" />
           </a>
           <a
             href="https://github.com/EFAM2907"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              className={s.icono}
-              src="https://img.icons8.com/fluency/344/github.png"
-              alt="GitHub"
-            />
+            <GithubIcon className={`${s.icono} ${s.github}`} label="GitHub" />
           </a>
          
         </div>
