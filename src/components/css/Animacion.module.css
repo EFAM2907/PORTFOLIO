@@ -95,9 +95,10 @@
 
 .abrir{ 
   position:fixed;
-  top:80%;
+  top:80px;
   left:2%;
- cursor: pointer;
+  cursor: pointer;
+  will-change: transform;
 }
 
 .cohete{

@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import style from "./css/Animacion.module.css";
 import Bounce from "react-reveal/Bounce";
 import { Modal } from "@material-ui/core";
@@ -10,8 +11,39 @@ import { GithubIcon, LinkedinIcon, RocketIcon } from './icons'
 
 
 
+const ROCKET_SIZE = 60;
+const ROCKET_TOP = 80;
+const ROCKET_BOTTOM_GAP = 24;
+
 const Animacion = () => {
   const [modal, setModal] = useState(false);
+  const rocketRef = useRef<HTMLDivElement>(null);
+
+  // The rocket descends as the page scrolls: 0% scrolled = near the top,
+  // 100% scrolled = near the bottom of the viewport.
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const el = rocketRef.current;
+      if (!el) return;
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(Math.max(window.scrollY / scrollable, 0), 1) : 0;
+      const travel = Math.max(window.innerHeight - ROCKET_SIZE - ROCKET_BOTTOM_GAP - ROCKET_TOP, 0);
+      el.style.transform = `translateY(${progress * travel}px)`;
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
   const abrirCerrarModal = () => {
     setModal(!modal);
   };
@@ -83,9 +115,16 @@ const Animacion = () => {
       
      
     </div>
-  <div className={style.abrir}><h1 className={style.h1}>Feedback</h1> <a  onClick={abrirCerrarModal}><RocketIcon className={style.cohete} label="Open feedback form" /></a> 
-    
-        </div>
+  {/* Portal: react-reveal wraps the header in a transformed element, which would break position: fixed */}
+  {createPortal(
+    <div ref={rocketRef} className={style.abrir}>
+      <h1 className={style.h1}>Feedback</h1>
+      <a onClick={abrirCerrarModal}>
+        <RocketIcon className={style.cohete} label="Open feedback form" />
+      </a>
+    </div>,
+    document.body,
+  )}
         </div>
   );
 };
