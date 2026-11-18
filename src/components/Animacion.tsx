@@ -4,6 +4,7 @@ import style from "./css/Animacion.module.css";
 import Bounce from "react-reveal/Bounce";
 import { Modal } from "@material-ui/core";
 import Form  from './Form'
+import Avatar from './Avatar'
 
 
 
@@ -29,11 +30,7 @@ const Animacion = () => {
       
       <Bounce right>
         <div className={style.section}>
-          <img
-            className={style.img}
-            src="https://c.tenor.com/xMGn2xPAKvQAAAAC/approved.gif"
-            alt="imagen"
-          />
+          <Avatar className={style.img} />
           <div className={style.cen}>
             <p className={style.p}>Hi, my name is Edwin Arias</p>
             <p className={style.sub}>AI Engineer</p>
