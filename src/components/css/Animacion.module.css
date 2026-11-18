@@ -95,7 +95,7 @@
 
 .abrir{ 
   position:fixed;
-  top:80px;
+  top:0;
   left:2%;
   cursor: pointer;
   will-change: transform;

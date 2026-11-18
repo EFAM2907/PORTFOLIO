@@ -12,15 +12,17 @@ import { GithubIcon, LinkedinIcon, RocketIcon } from './icons'
 
 
 const ROCKET_SIZE = 60;
-const ROCKET_TOP = 80;
 const ROCKET_BOTTOM_GAP = 24;
+// Where the rocket sits at the top of the page, as a fraction of the viewport
+// height: low enough to stay clear of the photo and the name.
+const ROCKET_START = 0.75;
 
 const Animacion = () => {
   const [modal, setModal] = useState(false);
   const rocketRef = useRef<HTMLDivElement>(null);
 
-  // The rocket descends as the page scrolls: 0% scrolled = near the top,
-  // 100% scrolled = near the bottom of the viewport.
+  // The rocket starts in the lower part of the screen and descends to the
+  // bottom edge as the page scrolls.
   useEffect(() => {
     let frame = 0;
     const update = () => {
@@ -29,8 +31,9 @@ const Animacion = () => {
       if (!el) return;
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       const progress = scrollable > 0 ? Math.min(Math.max(window.scrollY / scrollable, 0), 1) : 0;
-      const travel = Math.max(window.innerHeight - ROCKET_SIZE - ROCKET_BOTTOM_GAP - ROCKET_TOP, 0);
-      el.style.transform = `translateY(${progress * travel}px)`;
+      const endY = window.innerHeight - ROCKET_SIZE - ROCKET_BOTTOM_GAP;
+      const startY = Math.min(window.innerHeight * ROCKET_START, endY);
+      el.style.transform = `translateY(${startY + progress * (endY - startY)}px)`;
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
