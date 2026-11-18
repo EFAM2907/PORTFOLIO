@@ -7,6 +7,7 @@ import { Modal } from "@material-ui/core";
 import Form  from './Form'
 import Avatar from './Avatar'
 import { GithubIcon, LinkedinIcon, RocketIcon } from './icons'
+import RobotBanner from './RobotBanner'
 
 
 
@@ -105,6 +106,8 @@ const Animacion = () => {
        
        
       </Bounce>
+
+  <RobotBanner />
 
   <ul className={style.arrows}>
     <li>

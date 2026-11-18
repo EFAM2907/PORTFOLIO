@@ -1,0 +1,147 @@
+.banner {
+  position: absolute;
+  left: 50%;
+  bottom: 26%;
+  transform: translateX(-50%);
+  width: min(860px, 96vw);
+  pointer-events: none;
+}
+
+.scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ground {
+  stroke: rgba(80, 120, 190, 0.35);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 7;
+}
+
+/* ---- digits and letters ---- */
+.digit,
+.letter {
+  font-family: Hack, "Courier New", monospace;
+  font-weight: 700;
+  text-anchor: middle;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.digit {
+  font-size: 26px;
+  fill: #3d86f5;
+  animation-name: kick;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+.letter {
+  font-size: 40px;
+  fill: #eaf2ff;
+  opacity: 0;
+  animation: pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+.phrase {
+  animation: finale 1.4s ease-out both;
+}
+
+@keyframes kick {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+  70%  { transform: translateY(calc(var(--rise) * -0.95)) rotate(360deg) scale(1.3); opacity: 1; }
+  100% { transform: translateY(calc(var(--rise) * -1)) rotate(400deg) scale(0.6); opacity: 0; }
+}
+
+@keyframes pop {
+  0%   { opacity: 0; transform: scale(0.3); }
+  60%  { opacity: 1; transform: scale(1.35); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes finale {
+  0%   { filter: drop-shadow(0 0 0 rgba(60, 140, 255, 0)); }
+  40%  { filter: drop-shadow(0 0 10px rgba(60, 140, 255, 0.95)); }
+  100% { filter: drop-shadow(0 0 4px rgba(60, 140, 255, 0.45)); }
+}
+
+/* ---- robot ---- */
+.robot {
+  animation: walk linear both;
+}
+
+@keyframes walk {
+  from { transform: translate(var(--x0), 196px); }
+  to   { transform: translate(var(--x1), 196px); }
+}
+
+.bob {
+  animation: bob 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes bob {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-2.5px); }
+}
+
+.limb {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+}
+
+.legA { animation: stride 0.6s ease-in-out infinite alternate; }
+.legB { animation: stride 0.6s ease-in-out infinite alternate-reverse; }
+.armBack { animation: stride 0.6s ease-in-out infinite alternate-reverse; }
+.armFront { animation: flick 0.45s ease-in-out infinite; }
+
+@keyframes stride {
+  from { transform: rotate(-26deg); }
+  to   { transform: rotate(26deg); }
+}
+
+@keyframes flick {
+  0%, 100% { transform: rotate(8deg); }
+  40%      { transform: rotate(-125deg); }
+}
+
+.eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 3.2s infinite;
+}
+
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95%           { transform: scaleY(0.1); }
+}
+
+.antenna {
+  animation: beacon 0.9s ease-in-out infinite alternate;
+}
+
+.chest {
+  animation: beacon 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes beacon {
+  from { opacity: 0.45; }
+  to   { opacity: 1; }
+}
+
+/* No motion: show the finished phrase, no robot, no digits. */
+@media (prefers-reduced-motion: reduce) {
+  .robot,
+  .digit {
+    display: none;
+  }
+  .letter {
+    opacity: 1;
+    animation: none;
+  }
+  .phrase {
+    animation: none;
+  }
+}
+
