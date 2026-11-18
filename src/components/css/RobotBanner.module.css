@@ -1,17 +1,7 @@
 .banner {
-  position: absolute;
-  left: 50%;
-  bottom: 20%;
-  transform: translateX(-50%);
-  width: min(860px, 96vw);
+  width: min(640px, 94vw);
+  margin: 0 auto 24px;
   pointer-events: none;
-}
-
-@media (min-width: 900px) {
-  .banner {
-    bottom: auto;
-    top: calc(55% + 10px);
-  }
 }
 
 .scene {

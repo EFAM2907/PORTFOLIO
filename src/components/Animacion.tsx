@@ -1,16 +1,10 @@
-import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import style from "./css/Animacion.module.css";
-import Bounce from "react-reveal/Bounce";
 import { Modal } from "@material-ui/core";
-import Form  from './Form'
-import Avatar from './Avatar'
-import { GithubIcon, LinkedinIcon, RocketIcon } from './icons'
-import RobotBanner from './RobotBanner'
-
-
-
+import style from "./css/Animacion.module.css";
+import Form from "./Form";
+import Hero from "./Hero";
+import { RocketIcon } from "./icons";
 
 const ROCKET_SIZE = 60;
 const ROCKET_BOTTOM_GAP = 24;
@@ -48,93 +42,31 @@ const Animacion = () => {
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);
-  const abrirCerrarModal = () => {
-    setModal(!modal);
-  };
-  const body = (
-    <div >
-      <Form abrirCerrarModal={abrirCerrarModal} />
-    </div>
-  );
 
-  
+  const toggleModal = () => setModal((open) => !open);
 
   return (
-    
-    <div>
-       
-         <div className="container">
-      
-      <Bounce right>
-        <div className={style.section}>
-          <Avatar className={style.img} />
-          <div className={style.cen}>
-            <p className={style.p}>Hi, my name is Edwin Arias</p>
-            <p className={style.sub}>AI Engineer</p>
-            
-            
+    <>
+      <Hero />
 
-            <div className={style.centrar}>
-            
-              <a
-                href="https://github.com/EFAM2907"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GithubIcon className={style.iconos} label="GitHub" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/edwinfer2907/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedinIcon className={style.iconos} label="LinkedIn" />
-              </a> 
-              
-            </div>
-          
-
-          </div>
-
- 
-          <Modal className={style.modal} open={modal} onClose={abrirCerrarModal}>
-            {body}
-          </Modal>
+      <Modal className={style.modal} open={modal} onClose={toggleModal}>
+        <div>
+          <Form abrirCerrarModal={toggleModal} />
         </div>
-        
-      
-       
-       
-      </Bounce>
+      </Modal>
 
-  <RobotBanner />
-
-  <ul className={style.arrows}>
-    <li>
-    <a className={style.area} href='#about'/>
-
-    </li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-      
-     
-    </div>
-  {/* Portal: react-reveal wraps the header in a transformed element, which would break position: fixed */}
-  {createPortal(
-    <div ref={rocketRef} className={style.abrir}>
-      <h1 className={style.h1}>Feedback</h1>
-      <a onClick={abrirCerrarModal}>
-        <RocketIcon className={style.cohete} label="Open feedback form" />
-      </a>
-    </div>,
-    document.body,
-  )}
-        </div>
+      {/* Portal: react-reveal wraps the header in a transformed element, which would break position: fixed */}
+      {createPortal(
+        <div ref={rocketRef} className={style.abrir}>
+          <h1 className={style.h1}>Feedback</h1>
+          <a onClick={toggleModal}>
+            <RocketIcon className={style.cohete} label="Open feedback form" />
+          </a>
+        </div>,
+        document.body,
+      )}
+    </>
   );
 };
 
 export default Animacion;
-
-

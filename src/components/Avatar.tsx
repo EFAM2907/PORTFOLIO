@@ -1,19 +1,6 @@
 import { useEffect, useRef } from "react";
-import type { CSSProperties } from "react";
 import avatar from "../assets/avatar-toon.jpg";
 import s from "./css/Avatar.module.css";
-
-type Sparkle = { left: string; delay: string; duration: string; size: string };
-
-const sparkles: Sparkle[] = [
-  { left: "8%", delay: "0s", duration: "5s", size: "4px" },
-  { left: "22%", delay: "1.6s", duration: "6s", size: "3px" },
-  { left: "38%", delay: "3.1s", duration: "5.5s", size: "5px" },
-  { left: "55%", delay: "0.8s", duration: "6.5s", size: "3px" },
-  { left: "70%", delay: "2.4s", duration: "5s", size: "4px" },
-  { left: "85%", delay: "4s", duration: "6s", size: "5px" },
-  { left: "93%", delay: "1.2s", duration: "7s", size: "3px" },
-];
 
 // The portrait is a flat image, so the eyes are faked: each eye gets a patch
 // of "eye white" plus a copy of the painted iris that slides toward the mouse.
@@ -47,7 +34,7 @@ type AvatarProps = {
 };
 
 const Avatar = ({ className = "" }: AvatarProps) => {
-  const frameRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const irisRefs = useRef<Record<string, SVGGElement | null>>({});
 
   useEffect(() => {
@@ -59,7 +46,7 @@ const Avatar = ({ className = "" }: AvatarProps) => {
 
     const update = () => {
       frame = 0;
-      const box = frameRef.current?.getBoundingClientRect();
+      const box = stageRef.current?.getBoundingClientRect();
       if (!box) return;
       for (const eye of eyes) {
         const g = irisRefs.current[eye.id];
@@ -91,8 +78,8 @@ const Avatar = ({ className = "" }: AvatarProps) => {
   }, []);
 
   return (
-    <div ref={frameRef} className={`${s.frame} ${className}`}>
-      <div className={s.stage}>
+    <div className={`${s.frame} ${className}`}>
+      <div ref={stageRef} className={s.stage}>
         <img className={s.photo} src={avatar} alt="Cartoon portrait of Edwin Arias" />
         <svg
           className={s.eyes}
@@ -127,7 +114,13 @@ const Avatar = ({ className = "" }: AvatarProps) => {
           </defs>
           {eyes.map((eye) => (
             <g key={eye.id} clipPath={`url(#opening-${eye.id})`}>
-              <rect x="0" y="0" width={IMAGE_SIZE} height={IMAGE_SIZE} fill={`url(#white-${eye.id})`} />
+              <rect
+                x="0"
+                y="0"
+                width={IMAGE_SIZE}
+                height={IMAGE_SIZE}
+                fill={`url(#white-${eye.id})`}
+              />
               <g
                 className={s.iris}
                 ref={(node) => {
@@ -145,23 +138,6 @@ const Avatar = ({ className = "" }: AvatarProps) => {
           ))}
         </svg>
       </div>
-      <span className={`${s.light} ${s.red}`} />
-      <span className={`${s.light} ${s.blue}`} />
-      {sparkles.map((sp) => (
-        <span
-          key={sp.left}
-          className={s.sparkle}
-          style={
-            {
-              left: sp.left,
-              width: sp.size,
-              height: sp.size,
-              animationDelay: sp.delay,
-              animationDuration: sp.duration,
-            } as CSSProperties
-          }
-        />
-      ))}
     </div>
   );
 };

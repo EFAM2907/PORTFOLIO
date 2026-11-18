@@ -1,0 +1,134 @@
+.hero {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 64px; /* the fixed navbar */
+  color: #fff;
+}
+
+.main {
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+.text {
+  max-width: 540px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.role {
+  margin: 12px 0 24px;
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-weight: 500;
+  color: rgb(61, 134, 245);
+}
+
+.lead {
+  margin: 0 0 12px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.meta {
+  margin: 0 0 28px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.primary,
+.secondary {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 8px;
+  border: 1px solid rgb(5, 113, 236);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.primary {
+  background: rgb(5, 113, 236);
+  color: #fff;
+}
+
+.primary:hover {
+  background: rgb(30, 135, 255);
+}
+
+.secondary {
+  background: transparent;
+  color: rgb(61, 134, 245);
+}
+
+.secondary:hover {
+  background: rgb(5, 113, 236);
+  color: #fff;
+}
+
+.socials {
+  display: flex;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.social {
+  display: inline-flex;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.social:hover {
+  color: rgb(61, 134, 245);
+  transform: translateY(-2px);
+}
+
+.socialIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.avatar {
+  width: min(380px, 36vw, 50vh);
+  height: min(380px, 36vw, 50vh);
+}
+
+@media (max-width: 800px) {
+  .main {
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 28px;
+    text-align: center;
+  }
+
+  .actions,
+  .socials {
+    justify-content: center;
+  }
+
+  .avatar {
+    width: min(240px, 62vw);
+    height: min(240px, 62vw);
+  }
+}
