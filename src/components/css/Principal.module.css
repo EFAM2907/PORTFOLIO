@@ -8,29 +8,6 @@
     width: 100%;
     background-color:rgb(6 6 6);
 }
-.Title{
-    text-align: center;
-    padding:50px;
-    color:white;
-    font-size: 1.8em;
-}
-
-
-
- 
-.About{
-   display: flex;
-   justify-content:center;
-   overflow-x: hidden;
-}
-
-
-
-
-
-
-
-
 
 *{
     padding: 0;
@@ -40,9 +17,6 @@
    }
 
 
-.contenedor{
-    background-color: rgb(6 6 6);;
-}
 .footer{
     display:flex;
     align-items:center;
@@ -103,30 +77,4 @@
   .icono{
   margin:0px;
   }
-}
-
-@media  screen and (max-width: 650px) {
-    .About{
-      background-color: #060606;
-    }
-    .Title{
-   position: absolute;
-    top: 200%;
-    left: 18%
-    }
-}
-
-
-@media  screen and (max-width: 450px) {
-    .Title{
-        position: absolute;
-        top: 200%;
-        left:18%;
-    }
-}
-
-.medida{
-   width:850px;
-   height: 500px;
-   margin-bottom: 20px;
 }

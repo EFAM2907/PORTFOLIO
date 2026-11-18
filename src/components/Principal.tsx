@@ -1,7 +1,6 @@
 import Animacion from "./Animacion";
 import Proyecto from "./Proyecto";
 import Tecnologias from "./Tecnologias";
-import About from "./About";
 import Navbar from "./Navbar";
 import { CV_URL } from "../config";
 import { GithubIcon, LinkedinIcon } from "./icons";
@@ -17,12 +16,7 @@ const Principal = () => {
           <Animacion />
         </header>
       </Fade>
-      <section className={s.About}>
-        <About />
-      </section>
-      <br/>
       <section id="projects" className={s.Proye}>
-        {/* <h1 className={s.Title}>Proyectos</h1> */}
         <Proyecto />
       </section>
       <section id="technologies" className={s.tecno}>
