@@ -32,7 +32,7 @@ const Form = ({ abrirCerrarModal }: FormProps) => {
       <form className={s.Form} onSubmit={e => sendEmail(e)} >
         <div>
           <TextField
-            className={s.input}
+            fullWidth
             type="text"
             variant="filled"
             label="Name"
@@ -41,7 +41,7 @@ const Form = ({ abrirCerrarModal }: FormProps) => {
         </div>
         <div>
           <TextField
-            className={s.input}
+            fullWidth
             type="email"
             variant="filled"
             label="Email"
@@ -50,7 +50,7 @@ const Form = ({ abrirCerrarModal }: FormProps) => {
         </div>
         <div>
           <TextField
-            className={s.input}
+            fullWidth
             variant="filled"
             label="Feedback"
             multiline
