@@ -24,14 +24,20 @@
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
   font-size: 1.4rem;
   font-weight: 700;
   color: rgb(5, 113, 236);
   text-decoration: none;
 }
 
-.dot {
-  color: #fff;
+.badge {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-left: 5px;
+  vertical-align: -0.1em;
 }
 
 .menu {

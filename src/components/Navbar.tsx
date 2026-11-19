@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CV_URL } from "../config";
+import { VerifiedBadgeIcon } from "./icons";
 import s from "./css/Navbar.module.css";
 
 const links = [
@@ -16,7 +17,8 @@ const Navbar = () => {
     <nav className={s.nav} aria-label="Main">
       <div className={s.inner}>
         <a className={s.logo} href="#home" onClick={close}>
-          Edwin<span className={s.dot}>.</span>
+          Edwin
+          <VerifiedBadgeIcon className={s.badge} />
         </a>
 
         <button

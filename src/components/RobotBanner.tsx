@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import s from "./css/RobotBanner.module.css";
 
@@ -16,7 +17,12 @@ const FIRST_SLOT_X = (VIEW_W - PHRASE.length * SLOT_W) / 2;
 const SPEED = 80; // walking speed while kicking digits, svg units per second
 const BACK_SPEED = 110; // walking speed on the way back to sit down
 const ROBOT_START_X = -50;
-const START_DELAY = 2.8; // wait for the header intro before the robot enters
+// Seconds between the banner becoming visible and the robot walking in. The
+// whole timeline is paused until then (see RobotBanner below), so people
+// always see the robot pick up the numbers, even if they scroll to it late.
+const START_DELAY = 0.8;
+// Share of the banner that must be on screen before the show starts.
+const VISIBLE_RATIO = 0.6;
 const KICK_REACH = 20; // distance in front of the robot where it hits a digit
 const FLIGHT = 0.5;
 const TURN = 0.35; // seconds spent turning around
@@ -56,8 +62,32 @@ const walkKeyframes = `
   100% { transform: translate(${GAP_X}px, ${GROUND_Y}px) scaleX(-1); opacity: 0; }
 }`;
 
-const RobotBanner = () => (
-  <div className={s.banner}>
+const RobotBanner = () => {
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const el = bannerRef.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setStarted(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: VISIBLE_RATIO },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+  <div ref={bannerRef} className={started ? `${s.banner} ${s.started}` : s.banner}>
     <style>{walkKeyframes}</style>
     <svg
       className={s.scene}
@@ -197,6 +227,7 @@ const RobotBanner = () => (
       </g>
     </svg>
   </div>
-);
+  );
+};
 
 export default RobotBanner;

@@ -35,6 +35,34 @@ export const LinkedinIcon = ({ className, label }: IconProps) => (
   </svg>
 );
 
+// "Verified" seal: a circle with 8 soft bumps and a white check mark, drawn here.
+const SEAL_PATH = (() => {
+  const points: string[] = [];
+  const steps = 120;
+  for (let i = 0; i <= steps; i++) {
+    const angle = (i / steps) * Math.PI * 2;
+    const radius = 10.1 + 1.0 * Math.cos(8 * angle);
+    const x = 12 + radius * Math.cos(angle);
+    const y = 12 + radius * Math.sin(angle);
+    points.push(`${i === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`);
+  }
+  return `${points.join(" ")} Z`;
+})();
+
+export const VerifiedBadgeIcon = ({ className, label }: IconProps) => (
+  <svg className={className} viewBox="0 0 24 24" {...a11y(label)}>
+    <path d={SEAL_PATH} fill="#0095f6" />
+    <path
+      d="M7.4 12.4l3.2 3.2 6-6.6"
+      fill="none"
+      stroke="#fff"
+      strokeWidth="2.1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 export const RocketIcon = ({ className, label }: IconProps) => (
   <svg className={className} viewBox="0 0 64 64" {...a11y(label)}>
     <path d="M22 34 L10 50 L23 45 Z" fill="#ff4d5e" />

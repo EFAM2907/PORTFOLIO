@@ -4,6 +4,11 @@
   pointer-events: none;
 }
 
+/* Everything stays frozen until the banner is on screen (class set from RobotBanner.tsx). */
+.banner:not(.started) * {
+  animation-play-state: paused !important;
+}
+
 .scene {
   display: block;
   width: 100%;
